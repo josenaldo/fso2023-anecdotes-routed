@@ -1,24 +1,7 @@
+import { Header, Menu, Footer } from '@/features/layout'
 import { useState } from 'react'
-import './App.css'
 
-const Menu = () => {
-  const padding = {
-    paddingRight: 5,
-  }
-  return (
-    <div>
-      <a href="#" style={padding}>
-        anecdotes
-      </a>
-      <a href="#" style={padding}>
-        create new
-      </a>
-      <a href="#" style={padding}>
-        about
-      </a>
-    </div>
-  )
-}
+import './App.css'
 
 const AnecdoteList = ({ anecdotes }) => (
   <div>
@@ -50,17 +33,6 @@ const About = () => (
       Software engineering is full of excellent anecdotes, at this app you can
       find the best and add more.
     </p>
-  </div>
-)
-
-const Footer = () => (
-  <div>
-    Anecdote app for <a href="https://fullstackopen.com/">Full Stack Open</a>.
-    See{' '}
-    <a href="https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js">
-      https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js
-    </a>{' '}
-    for the source code.
   </div>
 )
 
@@ -153,15 +125,17 @@ const App = () => {
     setAnecdotes(anecdotes.map((a) => (a.id === id ? voted : a)))
   }
   return (
-    <div className="container">
-      <main>
-        <h1>Software anecdotes</h1>
-        <Menu />
-        <AnecdoteList anecdotes={anecdotes} />
-        <About />
-        <CreateNew addNew={addNew} />
-        <Footer />
-      </main>
+    <div>
+      <Header />
+      <div className="container">
+        <main>
+          <Menu />
+          <AnecdoteList anecdotes={anecdotes} />
+          <About />
+          <CreateNew addNew={addNew} />
+        </main>
+      </div>
+      <Footer />
     </div>
   )
 }
