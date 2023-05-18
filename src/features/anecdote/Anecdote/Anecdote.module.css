@@ -1,0 +1,39 @@
+.anecdoteWraper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.anecdote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  gap: 0.5rem;
+}
+
+.content {
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.author {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.votes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonVote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}

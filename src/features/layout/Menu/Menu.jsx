@@ -11,7 +11,7 @@ const Menu = () => {
     <nav className={styles.menuWrapper}>
       <div className="container">
         <div className={styles.menu}>
-          <Link to="/" style={padding}>
+          <Link to="/anecdotes" style={padding}>
             Anecdotes
           </Link>
           <Link to="/create" style={padding}>

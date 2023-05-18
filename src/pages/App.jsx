@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useMatch } from 'react-router-dom'
 
 import { Template } from '@/features/layout'
 import AboutPage from '@/pages/AboutPage'
 import CreatePage from '@/pages/CreatePage'
 import AnecdotesPage from '@/pages/AnecdotesPage'
+import AnecdotePage from '@/pages/AnecdotePage'
 
 import './App.css'
 
@@ -47,10 +48,25 @@ const IndexPage = () => {
 
     setAnecdotes(anecdotes.map((a) => (a.id === id ? voted : a)))
   }
+
+  const match = useMatch('/anecdotes/:id')
+  const anecdote = match
+    ? anecdotes.find((a) => a.id === Number(match.params.id))
+    : null
+
   return (
     <Template>
       <Routes>
-        <Route path="/" element={<AnecdotesPage anecdotes={anecdotes} />} />
+        <Route path="/" element={<Navigate replace to="/anecdotes" />} />
+        <Route
+          path="/anecdotes"
+          element={<AnecdotesPage anecdotes={anecdotes} />}
+        />
+        <Route
+          path="/anecdotes/:id"
+          element={<AnecdotePage anecdote={anecdote} />}
+        />
+
         <Route path="/create" element={<CreatePage addNew={addNew} />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>

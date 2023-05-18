@@ -1,0 +1,18 @@
+.anecdote {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.content {
+  font-style: italic;
+}
+
+.author {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
