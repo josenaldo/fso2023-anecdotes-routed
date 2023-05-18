@@ -1,18 +1,25 @@
 import { useState } from 'react'
 
-const CreatePage = (props) => {
+const CreatePage = ({ addNew }) => {
   const [content, setContent] = useState('')
   const [author, setAuthor] = useState('')
   const [info, setInfo] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.addNew({
+
+    const anecdote = {
       content,
       author,
       info,
       votes: 0,
-    })
+    }
+
+    setContent('')
+    setAuthor('')
+    setInfo('')
+
+    addNew(anecdote)
   }
 
   return (
@@ -44,7 +51,7 @@ const CreatePage = (props) => {
               onChange={(e) => setInfo(e.target.value)}
             />
           </div>
-          <button>Create</button>
+          <button type="submit">Create</button>
         </form>
       </article>
     </div>

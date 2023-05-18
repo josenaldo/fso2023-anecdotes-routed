@@ -5,11 +5,12 @@ const Footer = () => {
     <footer className={styles.footer}>
       <span>
         Anecdote 2 app for{' '}
-        <a href="https://fullstackopen.com/">Full Stack Open</a>. See{' '}
+        <a href="https://fullstackopen.com/">Full Stack Open</a>.
       </span>
       <span>
-        <a href="https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js">
-          https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js
+        See{' '}
+        <a href="https://github.com/josenaldo/fso2023-anecdotes-routed">
+          https://github.com/josenaldo/fso2023-anecdotes-routed
         </a>{' '}
         for the source code.
       </span>
