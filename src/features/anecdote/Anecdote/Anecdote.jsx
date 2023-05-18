@@ -1,6 +1,19 @@
 import styles from './Anecdote.module.css'
+import { useAnecdotesDispatch, useUpdateAnecdotes } from '@/features/anecdote'
 
 const Anecdote = ({ anecdote }) => {
+  const dispatch = useAnecdotesDispatch()
+  const updateAnecdote = useUpdateAnecdotes()
+
+  const handleVote = (anecdote) => {
+    const voted = {
+      ...anecdote,
+      votes: anecdote.votes + 1,
+    }
+
+    dispatch(updateAnecdote({ id: anecdote.id, anecdote: voted }))
+  }
+
   return (
     <article>
       <div className={styles.anecdoteWraper}>
@@ -10,7 +23,10 @@ const Anecdote = ({ anecdote }) => {
         </div>
 
         <div className={styles.votes}>
-          <button className="card small inline">
+          <button
+            className="card small inline"
+            onClick={() => handleVote(anecdote)}
+          >
             <div className={styles.buttonVote}>
               <span className="material-icons">thumb_up_alt</span>
               <span>Vote</span>
