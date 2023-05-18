@@ -6,7 +6,7 @@ const Template = ({ children }) => {
       <Header />
       <Menu />
       <div className="container">
-        <main> COISA{children}</main>
+        <main>{children}</main>
       </div>
       <Footer />
     </div>

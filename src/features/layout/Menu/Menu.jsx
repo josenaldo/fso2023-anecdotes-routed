@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import styles from './Menu.module.css'
 
 const Menu = () => {
@@ -9,15 +11,15 @@ const Menu = () => {
     <nav className={styles.menuWrapper}>
       <div className="container">
         <div className={styles.menu}>
-          <a href="#" style={padding}>
+          <Link to="/" style={padding}>
             Anecdotes
-          </a>
-          <a href="#" style={padding}>
+          </Link>
+          <Link to="/create" style={padding}>
             Create new
-          </a>
-          <a href="#" style={padding}>
+          </Link>
+          <Link to="/about" style={padding}>
             About
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
