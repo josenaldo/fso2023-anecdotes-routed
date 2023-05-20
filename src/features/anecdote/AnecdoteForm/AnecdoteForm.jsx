@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import { useAnecdotesDispatch, useCreateAnecdotes } from '@/features/anecdote'
+// import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { useField } from '@/features/hooks'
+import { useAnecdotesDispatch, useCreateAnecdotes } from '@/features/anecdote'
 
 const AnecdoteForm = () => {
   const dispatch = useAnecdotesDispatch()
   const create = useCreateAnecdotes()
   const navigate = useNavigate()
 
-  const [content, setContent] = useState('')
-  const [author, setAuthor] = useState('')
-  const [info, setInfo] = useState('')
+  const content = useField('content', 'text')
+  const author = useField('author', 'text')
+  const info = useField('info', 'text')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,14 +20,14 @@ const AnecdoteForm = () => {
 
     const anecdote = {
       id,
-      content,
-      author,
-      info,
+      content: content.value,
+      author: author.value,
+      info: info.value,
     }
 
-    setContent('')
-    setAuthor('')
-    setInfo('')
+    content.reset()
+    author.reset()
+    info.reset()
 
     dispatch(create(anecdote))
     navigate(`/anecdotes/${anecdote.id}`)
@@ -36,27 +38,15 @@ const AnecdoteForm = () => {
       <form onSubmit={handleSubmit}>
         <div>
           Content
-          <input
-            name="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
+          <input {...content.input} />
         </div>
         <div>
           Author
-          <input
-            name="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          />
+          <input {...author.input} />
         </div>
         <div>
           Url for more info
-          <input
-            name="info"
-            value={info}
-            onChange={(e) => setInfo(e.target.value)}
-          />
+          <input {...info.input} />
         </div>
         <button type="submit">Create</button>
       </form>
