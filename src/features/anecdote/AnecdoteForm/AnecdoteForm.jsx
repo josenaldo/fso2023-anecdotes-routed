@@ -33,6 +33,14 @@ const AnecdoteForm = () => {
     navigate(`/anecdotes/${anecdote.id}`)
   }
 
+  const handleReset = (e) => {
+    e.preventDefault()
+
+    content.reset()
+    author.reset()
+    info.reset()
+  }
+
   return (
     <article>
       <form onSubmit={handleSubmit}>
@@ -48,7 +56,12 @@ const AnecdoteForm = () => {
           Url for more info
           <input {...info.input} />
         </div>
-        <button type="submit">Create</button>
+        <div className="grid">
+          <button type="submit">Create</button>
+          <button onClick={handleReset} className="secondary">
+            Reset
+          </button>
+        </div>
       </form>
     </article>
   )
